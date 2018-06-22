@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg fixed-top">
+    <a class="navbar-brand" href="#">
+        <img src="assets/images/logogn1.png" width="250px" />
+    </a>
+    <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+        <i class="fa fa-bars text-muted" aria-hidden="true"></i>
+    </button>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+            <li class="dropdown" ngbDropdown>
+                <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
+                    <button type="button" class="btn btn-secondary">Luis Rojas</button>
+                </a>
+                <div class="dropdown-menu-left" ngbDropdownMenu>
+                    <a class="dropdown-item" [routerLink]="['/micuenta']" (click)="onLoggedout()">
+                        <i class="fa fa-fw fa-user"></i> {{ 'Mi cuenta' }}
+                    </a>
+                    <a class="dropdown-item" [routerLink]="['/login']" (click)="onLoggedout()">
+                        <i class="fa fa-fw fa-power-off"></i> {{'Cerrar Sesion'}}
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="btn-group" dropdown>
+        <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic">
+            Luis Rojas
+            <span class="caret"></span>
+        </button>
+        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+            <a class="dropdown-item" href="javascript:void(0)">
+                <i class="fa fa-fw fa-user"></i> {{ 'Mi cuenta'}}
+            </a>
+            <a class="dropdown-item" [routerLink]="['/login']" (click)="onLoggedout()">
+                <i class="fa fa-fw fa-power-off"></i> {{ 'Cerrar Sesion'}}
+            </a>
+        </ul>
+    </div>
+</nav>

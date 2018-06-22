@@ -1,0 +1,168 @@
+
+        <div [@routerTransition]>
+                <app-page-header [heading]="'Egresos'" [icon]="'fa-desktop'"></app-page-header>
+                <div [@routerTransition]>
+
+
+
+                  <div class="row">
+                    <div class="col col-xl-12 col-lg-12">
+                      <div class="card mb-3">
+                        <div class="card-header">
+                          Nuevo Egreso
+                        </div>
+                        <div class="card-header">
+                         
+                          <div class="form-group row">
+                            <label for="idarea-input" class="col-2 col-form-label">Usuario</label>
+                            <div class="col-10">
+                              <input class="form-control" type="text" id="idarea-input" value="Juan Perez" readonly>
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label for="idarea-input" class="col-2 col-form-label">Motivo</label>
+                            <div class="col-10">
+                              <input class="form-control" type="text" id="idarea-input">
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label for="idarea-input" class="col-2 col-form-label">Cuenta Origen</label>
+                            <div class="col-10">
+                              <select class="form-control">
+                                <option *ngFor="let cuenta of db_cuenta_origen" [value]="cuenta.idCuenta">{{cuenta.banco}}</option>
+                              </select>
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label for="idarea-input" class="col-2 col-form-label">Medio Pago</label>
+                            <div class="col-10">                                                          
+                              <select class="form-control">
+                                  <option *ngFor="let medio of db_medio_pago" [value]="medio.idMedioPago">{{medio.descripcionMedioPago}}</option>
+                              </select>
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label for="idarea-input" class="col-2 col-form-label">Importe</label>
+                            <div class="col-10">
+                              <input class="form-control" type="text" id="idarea-input">
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label for="idarea-input" class="col-2 col-form-label">Documento Adjunto</label>
+                            <div class="col-10">
+                              <input class="form-control" type="file" id="idarea-input">
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label for="idarea-input" class="col-2 col-form-label">Especificiones</label>
+                            <div class="col-10">
+                              <textarea name="" id="" cols="60" rows="2"></textarea>
+                            </div>
+                          </div>
+
+                          <!-- <div class="form-group row">
+                            <label for="idarea-input" class="col-2 col-form-label">Importe</label>
+                            <div class="col-10">
+                              <input class="form-control" type="text" id="idarea-input">
+                            </div>
+                          </div>
+
+                          
+
+                            <div class="form-group row">
+                            <label for="idarea-input" class="col-2 col-form-label">ID</label>
+                            <div class="col-10">
+                              <input class="form-control" type="text" id="idarea-input">
+                            </div>
+                          </div>
+                         
+                          <div class="form-group row">
+                            <label for="descriarea-input" class="col-2 col-form-label">Usuario</label>
+                            <div class="col-10">
+                              <input class="form-control" type="text" id="descriarea-input">
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                                <label for="descriarea-input" class="col-2 col-form-label">Fecha de Egreso</label>
+                                <div class="col-10">
+                                  <input class="form-control" type="date" id="descriarea-input">
+                                </div>
+                              </div>
+
+                              <div class="form-group row">
+                                    <label for="descriarea-input" class="col-2 col-form-label">Hora de Egreso</label>
+                                    <div class="col-10">
+                                      <input class="form-control" type="datetime-local" id="descriarea-input">
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group row">
+                                        <label for="descriarea-input" class="col-2 col-form-label">Monto</label>
+                                        <div class="col-10">
+                                          <input class="form-control" type="number" id="descriarea-input">
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                            <label for="descriarea-input" class="col-2 col-form-label">Sucursal</label>
+                                            <div class="col-10">
+                                           
+                                                            <select class="form-control">
+                                                                <option>Moyobamba</option>
+                                                                <option>Tarapoto</option>
+                                                                <option>Bagua</option>
+                                                                <option>Soritor</option>
+                                                            </select>
+                                                   
+                                            </div>
+                                          </div>
+
+                                          <div class="form-group row">
+                                                <label for="descriarea-input" class="col-2 col-form-label">Cuenta Bancaria</label>
+                                                <div class="col-10">
+                                                        <select class="form-control">
+                                                                <option>Banco de la Nacion</option>
+                                                                <option>Banco Continental</option>
+                                                                <option>Banco de Credito</option>
+                                                            </select>
+                                                </div>
+                                              </div>
+
+                                              <div class="form-group row">
+                                                    <label for="descriarea-input" class="col-2 col-form-label">Tipo de Pago</label>
+                                                    <div class="col-10">
+                                                            <select class="form-control">
+                                                                    <option>Efectivo</option>
+                                                                    <option>Cheque</option>
+                                                                    <option>Contado</option>
+                                                                </select>
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group row">
+                                                        <label for="descriarea-input" class="col-2 col-form-label">Motivo Egreso</label>
+                                                        <div class="col-10">
+                                                                <select class="form-control">
+                                                                        <option>Pago de Serivicos de Agua</option>
+                                                                        <option>Pago al Personal</option>
+                                                                        <option>Compra de materiales</option>
+                                                                    </select>
+                                                        </div>
+                                                      </div>
+ -->
+                          <hr>
+                          <button type="button" class="btn btn-success">Guardar</button>
+                          <button type="button" class="btn btn-danger">Cancelar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+         

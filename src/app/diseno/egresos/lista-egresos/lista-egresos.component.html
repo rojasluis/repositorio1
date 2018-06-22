@@ -1,0 +1,106 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Egresos'" [icon]="'fa-desktop'"></app-page-header>
+    <div [@routerTransition]>
+        <div class="row">
+            <div class="col col-xl-12 col-lg-12">
+                <div class="nav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <button type="button" class="btn btn-success" [routerLink]="['/egresos/crud-egresos']" [routerLinkActive]="['router-link-active']"
+                                (click)="onLoggedin()">Crear Egreso</button>
+                            <button type="button" class="btn btn-outline-primary">Descargar</button>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Busqueda" aria-label="Busqueda">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                    </form>
+                </div>
+                <hr>
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Historial Egresos
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>ID</th>
+                                    <th>Fecha/Hora</th>
+                                    <th>Monto</th>
+                                    <th>Sucursal</th>
+                                    <th>Cuenta</th>
+                                    <th>Concepto</th>
+                                    <th>Medio de Pago</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>001</td>
+                                    <td>12/04/18 - 09:35</td>
+                                    <td>550</td>
+                                    <td>Moyobamba</td>
+                                    <td>Cta. Banco Continental</td>
+                                    <td>Pago a Proveedores</td>
+                                    <td>Efectivo</td>
+                                    <td width="1">
+                                        <button type="button" class="btn btn-outline-danger">
+                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                        </button>
+                                    </td>
+                                    <td width="1">
+                                        <button type="button" class="btn btn-outline-success">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>002</td>
+                                    <td>12/02/18 - 09:35</td>
+                                    <td>4000</td>
+                                    <td>Soritor</td>
+                                    <td>Cta. Banco Continental</td>
+                                    <td>Pago a Personal</td>
+                                    <td>Efectivo</td>
+                                    <td width="1">
+                                        <button type="button" class="btn btn-outline-danger">
+                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                        </button>
+                                    </td>
+                                    <td width="1">
+                                        <button type="button" class="btn btn-outline-success">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>003</td>
+                                    <td>04/04/18 - 19:35</td>
+                                    <td>2500</td>
+                                    <td>Tarapoto</td>
+                                    <td>Cta. Banco Continental</td>
+                                    <td>Pago a EPS moyobamba</td>
+                                    <td>Deposito</td>
+                                    <td width="1">
+                                        <button type="button" class="btn btn-outline-danger">
+                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                        </button>
+                                    </td>
+                                    <td width="1">
+                                        <button type="button" class="btn btn-outline-success">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
