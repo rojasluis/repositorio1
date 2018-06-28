@@ -6,8 +6,8 @@ import { Egreso } from '../../egresos/egreso.model';
 import { Cuenta } from '../../cuentabancaria/cuenta.model';
 import { MedioPago } from '../../tipopago/medio.pago.model';
 import { conceptoEgreso } from '../../categresos/concepto.egreso.model';
-// import { CrudHttpClientServiceShared } from '../../../shared/servicio/crudHttpClient.service.shared';
-
+import { UsuariosService } from '../../usuarios/usuarios.service';
+import { Usuario } from '../../usuarios/usuario.model';
 
 
 @Component({
@@ -23,6 +23,7 @@ export class CrudEgresosComponent implements OnInit {
 
   
   Egreso_model: Egreso;
+  usuarioModel: Usuario;
   Cuenta_model: Cuenta;
   MedioPago_model: MedioPago;
   ConceptoEgreso_model: conceptoEgreso;
@@ -30,14 +31,21 @@ export class CrudEgresosComponent implements OnInit {
   form: FormGroup;
   date: Date = new Date();
 
-  constructor( private _egresoService: EgresosService, private formBuilder: FormBuilder) { }
+  constructor( 
+      private egresoService: EgresosService, 
+      private usuarioService: UsuariosService,
+      private formBuilder: FormBuilder
+    ) { }
 
   ngOnInit() {
-    this._egresoService.getAllMedioPago().subscribe( res => this.MedioPago_model = res );
-    this._egresoService.getAllCuentas().subscribe( res => {this.db_cuenta_origen = res;});    
-    this._egresoService.getAllConceptoEgreso().subscribe( res => this.db_concepto_egreso = res);
-        
+    this.egresoService.getAllMedioPago().subscribe( res => this.MedioPago_model = res );
+    this.egresoService.getAllCuentas().subscribe( res => {this.db_cuenta_origen = res;});    
+    this.egresoService.getAllConceptoEgreso().subscribe( res => this.db_concepto_egreso = res);
+    this.usuarioModel = this.usuarioService.getUsuario();    
+    this.prepararFormulario();
+  }
 
+  prepararFormulario() {
     this.form = this.formBuilder.group({      
       imagen:'',
       monto:150.0,
@@ -46,29 +54,32 @@ export class CrudEgresosComponent implements OnInit {
       medioPago:this.MedioPago_model,      
       fecha: null,
       sucursal:null,
-      usuario:null,      
+      usuario: this.usuarioModel.nombreApellido,      
       detalles: '',
       idEgreso:0
     });
-
   }
 
   aaa(){    
-    console.log(this.form.value.medioPago);
+    console.log(this.usuarioModel);
   }
 
   guardarCambios() {        
-    console.log('egreso model ', this.Egreso_model);    
-    // this.form.value.conceptoEgreso = this.form.value.conceptoEgreso.idConceptoEgreso;    
-    //const date: Date = new Date;
+    // console.log('egreso model ', this.Egreso_model);    
     this.form.value.fecha = Date.parse(this.form.value.fecha);
     this.form.value.cuenta = JSON.parse(this.form.value.cuenta)
     this.form.value.medioPago = JSON.parse(this.form.value.medioPago)
+    this.form.value.usuario = this.usuarioModel;
+    this.form.value.sucursal = this.usuarioModel.sucursal;
+
     this.Egreso_model = <Egreso> this.form.value;
     console.log(JSON.stringify(this.form.value));
     console.log(this.form.value);
 
-    this._egresoService.grabar(this.Egreso_model).subscribe( res => console.log('servidor', res) );
+    this.egresoService.grabar(this.Egreso_model).subscribe( res => {
+       console.log('servidor', res);
+       this.prepararFormulario();
+    });
     
     
   }

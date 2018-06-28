@@ -26,25 +26,25 @@
                             <thead class="thead-dark">
                                 <tr>
                                     <th>#</th>
-                                    <th>ID</th>
                                     <th>Fecha/Hora</th>
                                     <th>Monto</th>
                                     <th>Sucursal</th>
                                     <th>Cuenta</th>
                                     <th>Concepto</th>
                                     <th>Medio de Pago</th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>001</td>
-                                    <td>12/04/18 - 09:35</td>
-                                    <td>550</td>
-                                    <td>Moyobamba</td>
-                                    <td>Cta. Banco Continental</td>
-                                    <td>Pago a Proveedores</td>
-                                    <td>Efectivo</td>
+                                <tr *ngFor="let item of egresoSModel; let i = index">
+                                    <th scope="row">{{i+1}}</th>                                    
+                                    <td>{{item.fecha | date:'mediumDate'}}</td>
+                                    <td>{{item.monto | number:'0.2'}}</td>
+                                    <td>{{item.sucursal.descripcion}}</td>      
+                                    <td>{{item.cuenta.banco}}</td>                                                                  
+                                    <td>{{item.conceptoEgreso.descripcion}}</td>
+                                    <td>{{item.medioPago.descripcionMedioPago}}</td>
                                     <td width="1">
                                         <button type="button" class="btn btn-outline-danger">
                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
@@ -55,47 +55,7 @@
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </button>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>002</td>
-                                    <td>12/02/18 - 09:35</td>
-                                    <td>4000</td>
-                                    <td>Soritor</td>
-                                    <td>Cta. Banco Continental</td>
-                                    <td>Pago a Personal</td>
-                                    <td>Efectivo</td>
-                                    <td width="1">
-                                        <button type="button" class="btn btn-outline-danger">
-                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-                                    <td width="1">
-                                        <button type="button" class="btn btn-outline-success">
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>003</td>
-                                    <td>04/04/18 - 19:35</td>
-                                    <td>2500</td>
-                                    <td>Tarapoto</td>
-                                    <td>Cta. Banco Continental</td>
-                                    <td>Pago a EPS moyobamba</td>
-                                    <td>Deposito</td>
-                                    <td width="1">
-                                        <button type="button" class="btn btn-outline-danger">
-                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-                                    <td width="1">
-                                        <button type="button" class="btn btn-outline-success">
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-                                </tr>
+                                </tr>                                
                             </tbody>
                         </table>
                     </div>

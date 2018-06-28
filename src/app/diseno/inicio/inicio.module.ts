@@ -16,8 +16,8 @@ import { PageHeaderModule } from '../../shared';
         CommonModule,
         NgbCarouselModule.forRoot(),
         NgbAlertModule.forRoot(),
-        InicioRoutingModule,
-        StatModule,CommonModule, Ng2Ingresos, PageHeaderModule
+        InicioRoutingModule,        
+        StatModule,CommonModule, Ng2Ingresos, PageHeaderModule        
     ],
     declarations: [
         InicioComponent,

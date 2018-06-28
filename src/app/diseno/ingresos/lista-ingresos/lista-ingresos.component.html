@@ -25,8 +25,7 @@
                         <table class="table">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th>#</th>
-                                    <th>ID</th>
+                                    <th>#</th>                                    
                                     <th>Fecha/Hora</th>
                                     <th>Monto</th>
                                     <th>Sucursal</th>
@@ -38,15 +37,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>001</td>
-                                    <td>12/04/18 - 09:35</td>
-                                    <td>1200</td>
-                                    <td>Moyobamba</td>
-                                    <td>Cta. Banco Continental</td>
-                                    <td>Ingreso por servicio de internet</td>
-                                    <td>Efectivo</td>
+                                <tr *ngFor="let item of ingresoSModel; let i = index">
+                                    <th scope="row">1</th>                                    
+                                    <td>{{item.fecha | date:'mediumDate'}}</td>
+                                    <td>{{item.montoIngresado | number:'0.2'}}</td>
+                                    <td>{{item.sucursal.descripcion}}</td>      
+                                    <td>{{item.cuenta.banco}}</td>                                                                  
+                                    <td>{{item.conceptoIngreso.descripcion}}</td>
+                                    <td>{{item.medioPago.descripcionMedioPago}}</td>
                                     <td width="1">
                                         <button type="button" class="btn btn-outline-danger">
                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
@@ -57,47 +55,7 @@
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </button>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>002</td>
-                                    <td>12/04/18 - 09:35</td>
-                                    <td>750</td>
-                                    <td>Moyobamba</td>
-                                    <td>Cta. Banco Continental</td>
-                                    <td>Ingreso por publicidad</td>
-                                    <td>Efectivo</td>
-                                    <td width="1">
-                                        <button type="button" class="btn btn-outline-danger">
-                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-                                    <td width="1">
-                                        <button type="button" class="btn btn-outline-success">
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>003</td>
-                                    <td>12/04/18 - 09:35</td>
-                                    <td>9300</td>
-                                    <td>Moyobamba</td>
-                                    <td>Cta. Banco Continental</td>
-                                    <td>Pago de clientes</td>
-                                    <td>Efectivo</td>
-                                    <td width="1">
-                                        <button type="button" class="btn btn-outline-danger">
-                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-                                    <td width="1">
-                                        <button type="button" class="btn btn-outline-success">
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-                                </tr>
+                                </tr>                                
                             </tbody>
                         </table>
                     </div>

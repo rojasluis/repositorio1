@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../../router.animations';
+import { CrudService } from '../../services/crud.service';
+import { Egreso } from '../egreso.model';
 
 
 @Component({
@@ -9,9 +11,18 @@ import { routerTransition } from '../../../router.animations';
 })
 export class ListaEgresosComponent implements OnInit {
 
-  constructor() { }
+  egresoSModel: Egreso[];
+  constructor(private crudService: CrudService) { }
 
   ngOnInit() {
+    this.getAll();
+  }
+
+  getAll() {
+    this.crudService.getAll('egreso','getall').subscribe(res => {      
+      this.egresoSModel = <Egreso[]> res;
+      console.log('egresos', this.egresoSModel);
+    })
   }
 
 }

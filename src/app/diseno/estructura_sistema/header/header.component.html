@@ -7,11 +7,11 @@
     </button>
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
-            <li class="dropdown" ngbDropdown>
+            <li class="dropdown" ngbDropdown placement="buttom-right">
                 <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
                     <button type="button" class="btn btn-secondary">Luis Rojas</button>
                 </a>
-                <div class="dropdown-menu-left" ngbDropdownMenu>
+                <div class="dropdown-menu-right" ngbDropdownMenu>
                     <a class="dropdown-item" [routerLink]="['/micuenta']" (click)="onLoggedout()">
                         <i class="fa fa-fw fa-user"></i> {{ 'Mi cuenta' }}
                     </a>
@@ -23,10 +23,10 @@
         </ul>
     </div>
     <div class="btn-group" dropdown>
-        <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic">
+        <!-- <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic">
             Luis Rojas
             <span class="caret"></span>
-        </button>
+        </button> -->
         <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
             <a class="dropdown-item" href="javascript:void(0)">
                 <i class="fa fa-fw fa-user"></i> {{ 'Mi cuenta'}}

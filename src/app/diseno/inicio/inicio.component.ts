@@ -7,7 +7,8 @@ import { routerTransition } from '../../router.animations';
     styleUrls: ['./inicio.component.scss'],
     animations: [routerTransition()]
 })
-export class InicioComponent implements OnInit {
+export class InicioComponent implements OnInit {    
+
     public barChartOptions: any = {
         scaleShowVerticalLines: false,
         responsive: true
@@ -41,11 +42,7 @@ export class InicioComponent implements OnInit {
 
     public chartHovered(e: any): void {
         // console.log(e);
-    }
-
-
-
-
+    }    
     public randomize(): void {
         // Only Change 3 values
         const data = [
@@ -68,7 +65,9 @@ export class InicioComponent implements OnInit {
          */
     }
 
+
     constructor() { }
 
-    ngOnInit() { }
+    ngOnInit() {
+    }
 }

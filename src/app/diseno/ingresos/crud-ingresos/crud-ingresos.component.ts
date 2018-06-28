@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { IngresosModule } from '../ingresos.module';
 import { Usuario } from '../../usuarios/usuario.model';
 import { Ingreso } from '../ingreso.model';
+import { UsuariosService } from '../../usuarios/usuarios.service';
 
 
 @Component({
@@ -22,11 +23,13 @@ export class CrudIngresosComponent implements OnInit {
   db_cuenta: any;
   db_medio_pago: any;  
 
-  constructor(private crudService: CrudService, private formBuilder: FormBuilder) { }
+  constructor(
+      private crudService: CrudService, 
+      private usuarioService: UsuariosService,
+      private formBuilder: FormBuilder) { }
 
-  ngOnInit() {
-    this.prepararFormulario();
-    this.obtenerMaestros();
+  ngOnInit() {    
+    this.obtenerMaestros();    
   }
 
   prepararFormulario() {
@@ -38,7 +41,9 @@ export class CrudIngresosComponent implements OnInit {
         conceptoIngreso: this.db_concepto_ingreso,
         cuenta: this.db_cuenta,
         medioPago: this.db_medio_pago,        
-        detalles: ''  
+        sucursal:this.usuarioModel.sucursal,
+        usuario: this.usuarioModel,      
+        detalles: ''          
     });
   }
 
@@ -46,20 +51,22 @@ export class CrudIngresosComponent implements OnInit {
     this.crudService.getAll('conceptoingreso', 'getall').subscribe(res => this.db_concepto_ingreso = res);      
     this.crudService.getAll('cuenta', 'getall').subscribe(res => this.db_cuenta = res);      
     this.crudService.getAll('mediopago', 'getall').subscribe(res => this.db_medio_pago = res);
+    this.usuarioModel = this.usuarioService.getUsuario();
+
+    this.prepararFormulario();
   }
 
   guardarCambios() {
     this.form.value.fecha = Date.parse(this.form.value.fecha);
-    this.form.value.cuenta = JSON.parse(this.form.value.cuenta)
-    this.form.value.medioPago = JSON.parse(this.form.value.medioPago)
-    let Ingreso_model:Ingreso = <Ingreso> this.form.value;
-    
-    Ingreso_model.usuario = this.usuarioModel;
-    
-    // console.log('modelo', JSON.stringify(Ingreso_model));
-    // console.log('modelo', Ingreso_model);
+    this.form.value.cuenta = JSON.parse(this.form.value.cuenta);
+    this.form.value.medioPago = JSON.parse(this.form.value.medioPago);
 
-    this.crudService.create(Ingreso_model, 'ingreso', 'save').subscribe( res => console.log(res))
+    const Ingreso_model: Ingreso = <Ingreso> this.form.value;
+
+    this.crudService.create(Ingreso_model, 'ingreso', 'save').subscribe( res => {
+      console.log(res);      
+      this.prepararFormulario();
+    })
   }
 
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../../router.animations';
+import { CrudService } from '../../services/crud.service';
+import { Ingreso } from '../ingreso.model';
 
 @Component({
   selector: 'app-lista-ingresos',
@@ -8,9 +10,18 @@ import { routerTransition } from '../../../router.animations';
 })
 export class ListaIngresosComponent implements OnInit {
 
-  constructor() { }
+  ingresoSModel: Ingreso[];
+  constructor(private crudService: CrudService) { }
 
   ngOnInit() {
+    this.getAll();
+  }
+
+  getAll(){
+    this.crudService.getAll('ingreso','getall').subscribe(res => {      
+      this.ingresoSModel = <Ingreso[]> res;
+      console.log('ingresos', this.ingresoSModel);
+    })
   }
 
 }

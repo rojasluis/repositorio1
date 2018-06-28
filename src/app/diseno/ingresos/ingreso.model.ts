@@ -15,6 +15,7 @@ export class Ingreso {
         public medioPago: MedioPago = null,
         public sucursal: Sucursal = null ,
         public usuario: Usuario = null,
+        public detalles: string = null
     ) {
         // this.idIngreso = idIngreso;
         // this.fecha = fecha;
