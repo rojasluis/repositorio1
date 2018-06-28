@@ -5,7 +5,6 @@ import { routerTransition } from '../../../router.animations';
 @Component({
   selector: 'app-lista-catingresos',
   templateUrl: './lista-catingresos.component.html',
-  styleUrls: ['./lista-catingresos.component.scss'],
   animations: [routerTransition()]
 })
 export class ListaCatIngresosComponent implements OnInit {

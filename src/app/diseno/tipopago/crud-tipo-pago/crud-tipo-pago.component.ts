@@ -3,8 +3,7 @@ import { routerTransition } from '../../../router.animations';
 
 @Component({
   selector: 'app-crud-tipo-pago',
-  templateUrl: './crud-tipo-pago.component.html',
-  styleUrls: ['./crud-tipo-pago.component.scss'],
+  templateUrl: './crud-tipo-pago.component.html',  
   animations: [routerTransition()]
 })
 export class CrudTipoPagoComponent implements OnInit {

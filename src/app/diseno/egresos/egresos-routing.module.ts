@@ -1,10 +1,17 @@
-import { EgresosComponent } from './egresos.component';
+// import { EgresosComponent } from './egresos.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../../shared';
+
+import { ListaEgresosComponent } from './lista-egresos/lista-egresos.component';
+import { CrudEgresosComponent } from './crud-egresos/crud-egresos.component';
+
 const routes: Routes = [
-    { path: '', loadChildren: './lista-egresos/lista-egresos.module#ListaEgresosModule' },
-    { path: 'crud-egresos', loadChildren: './crud-egresos/crud-egresos.module#CrudEgresosModule' }
+    { path: '', component: ListaEgresosComponent ,
+        children: [
+            { path: 'crud-egresos', component: CrudEgresosComponent }
+        ]
+    }    
 ];
 
 @NgModule({

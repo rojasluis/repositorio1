@@ -1,10 +1,19 @@
-import { ProveedoresComponent } from './proveedores.component';
+// import { ProveedoresComponent } from './proveedores.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../../shared';
+
+import { ListaProveedoresComponent } from './lista-proveedores/lista-proveedores.component';
+import { CrudProveedoresComponent } from './crud-proveedores/crud-proveedores.component';
+
+
+
 const routes: Routes = [
-    { path: '', loadChildren: './lista-proveedores/lista-proveedores.module#ListaProveedoresModule' },
-    { path: 'crud-proveedores', loadChildren: './crud-proveedores/crud-proveedores.module#CrudProveedoresModule' }
+    { path: '', component: ListaProveedoresComponent, 
+        children: [
+            { path: 'crud-proveedores', component: CrudProveedoresComponent }
+        ]
+    }    
 ];
 
 @NgModule({

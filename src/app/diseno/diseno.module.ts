@@ -9,14 +9,13 @@ import { HeaderComponent } from './estructura_sistema/header/header.component';
 import { ServiceModule } from './services/service.module';
 
 
-
 @NgModule({
     imports: [
-        CommonModule,
-        DisenoRoutingModule,
+        CommonModule,        
+        DisenoRoutingModule,        
         TranslateModule,
         NgbDropdownModule.forRoot(),
-        ServiceModule
+        ServiceModule           
     ],
     declarations: [DisenoComponent, SidebarComponent, HeaderComponent]
 })

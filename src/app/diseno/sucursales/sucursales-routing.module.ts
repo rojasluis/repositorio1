@@ -1,10 +1,15 @@
-import { SucursalesComponent } from './sucursales.component';
+// import { SucursalesComponent } from './sucursales.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../../shared';
+
+import { ListaSucursalesComponent } from './lista-sucursales/lista-sucursales.component';
+import { CrudSucursalesComponent } from './crud-sucursales/crud-sucursales.component';
+
+
 const routes: Routes = [
-    { path: '', loadChildren: './lista-sucursales/lista-sucursales.module#ListaSucursalesModule' },
-    { path: 'crud-sucursales', loadChildren: './crud-sucursales/crud-sucursales.module#CrudSucursalesModule' }
+    { path: '', component: ListaSucursalesComponent },
+    { path: 'crud-sucursales', component: CrudSucursalesComponent }
 ];
 
 @NgModule({

@@ -4,7 +4,6 @@ import { routerTransition } from '../../../router.animations';
 @Component({
   selector: 'app-crud-catingresos',
   templateUrl: './crud-catingresos.component.html',
-  styleUrls: ['./crud-catingresos.component.scss'],
   animations: [routerTransition()]
 })
 export class CrudCatIngresosComponent implements OnInit {

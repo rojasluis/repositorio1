@@ -12,35 +12,52 @@
                           Nuevo Egreso
                         </div>
                         <div class="card-header">
-                         
+                      <form [formGroup]="form">                        
+                        <br><br>
                           <div class="form-group row">
                             <label for="idarea-input" class="col-2 col-form-label">Usuario</label>
                             <div class="col-10">
-                              <input class="form-control" type="text" id="idarea-input" value="Juan Perez" readonly>
+                              <input formControlName="usuario" class="form-control" type="text" id="idarea-input" value="Juan Perez" readonly>
                             </div>
                           </div>
+                          
+                          <div class="form-group row">
+                              <label for="idarea-input" class="col-2 col-form-label">Fecha de egreso</label>
+                              <div class="col-10">
+                                <input type="date" class="form-control" formControlName="fecha"  name="" id="">                                
+                              </div>
+                            </div>
 
                           <div class="form-group row">
                             <label for="idarea-input" class="col-2 col-form-label">Motivo</label>
                             <div class="col-10">
-                              <input class="form-control" type="text" id="idarea-input">
+                                <!-- <select class="form-control" formControlName="conceptoEgreso">
+                                    <option *ngFor="let concepto of db_concepto_egreso" [value]="concepto.idConceptoEgreso">{{concepto.descripcion}}</option>
+                                </select> -->
+                                <ng-select formControlName="conceptoEgreso" class="custom" [items]="db_concepto_egreso"
+                                    [addTag]="false"
+                                    addTagText="Agregar Concepto"                                    
+                                    bindLabel="descripcion"
+                                    biddValue="idConceptoEgreso"
+                                    [(ngModel)]="selectConceptoEgreso">
+                                </ng-select>                                
                             </div>
                           </div>
 
                           <div class="form-group row">
                             <label for="idarea-input" class="col-2 col-form-label">Cuenta Origen</label>
                             <div class="col-10">
-                              <select class="form-control">
-                                <option *ngFor="let cuenta of db_cuenta_origen" [value]="cuenta.idCuenta">{{cuenta.banco}}</option>
+                              <select class="form-control" formControlName="cuenta">
+                                <option *ngFor="let cuenta of db_cuenta_origen" [value]="cuenta | json">{{cuenta.banco}}</option>
                               </select>
                             </div>
                           </div>
 
                           <div class="form-group row">
-                            <label for="idarea-input" class="col-2 col-form-label">Medio Pago</label>
+                            <label for="idarea-input" class="col-2 col-form-label">Medio Pago AA</label>
                             <div class="col-10">                                                          
-                              <select class="form-control">
-                                  <option *ngFor="let medio of db_medio_pago" [value]="medio.idMedioPago">{{medio.descripcionMedioPago}}</option>
+                              <select class="form-control" formControlName="medioPago">
+                                  <option *ngFor="let medio of MedioPago_model" [value]="medio | json">{{medio.descripcionMedioPago}}</option>
                               </select>
                             </div>
                           </div>
@@ -48,24 +65,24 @@
                           <div class="form-group row">
                             <label for="idarea-input" class="col-2 col-form-label">Importe</label>
                             <div class="col-10">
-                              <input class="form-control" type="text" id="idarea-input">
+                              <input class="form-control" formControlName="monto" type="text" id="idarea-input">                              
                             </div>
                           </div>
 
                           <div class="form-group row">
                             <label for="idarea-input" class="col-2 col-form-label">Documento Adjunto</label>
                             <div class="col-10">
-                              <input class="form-control" type="file" id="idarea-input">
+                              <input class="form-control" formControlName="imagen" type="file" id="idarea-input">
                             </div>
                           </div>
 
                           <div class="form-group row">
                             <label for="idarea-input" class="col-2 col-form-label">Especificiones</label>
                             <div class="col-10">
-                              <textarea name="" id="" cols="60" rows="2"></textarea>
+                              <textarea class="form-control"  formControlName="detalles" name="" id="" cols="60" rows="2"></textarea>
                             </div>
-                          </div>
-
+                          </div>                                                 
+                        </form>
                           <!-- <div class="form-group row">
                             <label for="idarea-input" class="col-2 col-form-label">Importe</label>
                             <div class="col-10">
@@ -158,8 +175,8 @@
                                                       </div>
  -->
                           <hr>
-                          <button type="button" class="btn btn-success">Guardar</button>
-                          <button type="button" class="btn btn-danger">Cancelar</button>
+                          <button type="button" class="btn btn-success" (click)="guardarCambios()">Guardar</button>
+                          <button type="button" class="btn btn-danger" (click)="aaa()">Cancelar</button>
                         </div>
                       </div>
                     </div>

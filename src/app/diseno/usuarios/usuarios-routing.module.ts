@@ -1,10 +1,18 @@
-import { UsuariosComponent } from './usuarios.component';
+// import { UsuariosComponent } from './usuarios.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../../shared';
+
+import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
+import { CrudUsuariosComponent } from './crud-usuarios/crud-usuarios.component';
+
+
 const routes: Routes = [
-    { path: '', loadChildren: './lista-usuarios/lista-usuarios.module#ListaUsuariosModule' },
-    { path: 'crud-usuarios', loadChildren: './crud-usuarios/crud-usuarios.module#CrudUsuariosModule' }
+    { path: '', component: ListaUsuariosComponent,  
+        children: [
+            { path: 'crud-usuarios', component: CrudUsuariosComponent }
+        ]
+    }    
 ];
 
 @NgModule({

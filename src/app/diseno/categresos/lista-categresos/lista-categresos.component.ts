@@ -4,8 +4,7 @@ import { routerTransition } from '../../../router.animations';
 
 @Component({
   selector: 'app-lista-categresos',
-  templateUrl: './lista-categresos.component.html',
-  styleUrls: ['./lista-categresos.component.scss'],
+  templateUrl: './lista-categresos.component.html',  
   animations: [routerTransition()]
 })
 export class ListaCatEgresosComponent implements OnInit {

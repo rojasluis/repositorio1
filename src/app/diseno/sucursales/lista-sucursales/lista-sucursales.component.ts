@@ -3,8 +3,7 @@ import { routerTransition } from '../../../router.animations';
 
 @Component({
   selector: 'app-lista-sucursales',
-  templateUrl: './lista-sucursales.component.html',
-  styleUrls: ['./lista-sucursales.component.scss'],
+  templateUrl: './lista-sucursales.component.html',  
   animations: [routerTransition()]
 })
 export class ListaSucursalesComponent implements OnInit {

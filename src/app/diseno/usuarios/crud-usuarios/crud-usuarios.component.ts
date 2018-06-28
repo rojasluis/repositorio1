@@ -3,8 +3,7 @@ import { routerTransition } from '../../../router.animations';
 
 @Component({
   selector: 'app-crud-usuarios',
-  templateUrl: './crud-usuarios.component.html',
-  styleUrls: ['./crud-usuarios.component.scss'],
+  templateUrl: './crud-usuarios.component.html',  
   animations: [routerTransition()]
 })
 export class CrudUsuariosComponent implements OnInit {

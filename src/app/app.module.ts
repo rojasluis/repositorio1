@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
 // AoT requires an exported function for factories
 
 
@@ -18,10 +20,12 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
         BsDropdownModule.forRoot(),
         CommonModule,
         BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
         BrowserAnimationsModule,
-        HttpClientModule,
-       
-        AppRoutingModule
+        HttpClientModule,        
+        AppRoutingModule,
+        SharedModule
      
     ],
     declarations: [AppComponent],

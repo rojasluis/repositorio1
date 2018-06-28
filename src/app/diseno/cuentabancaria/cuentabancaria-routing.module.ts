@@ -1,10 +1,17 @@
-import { CuentaBancariaComponent } from './cuentabancaria.component';
+// import { CuentaBancariaComponent } from './cuentabancaria.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../../shared';
+
+import { ListaCuentaBancariaComponent } from './lista-cuentabancaria/lista-cuentabancaria.component';
+import { CrudCuentaBancariaComponent } from './crud-cuentabancaria/crud-cuentabancaria.component';
+
 const routes: Routes = [
-    { path: '', loadChildren: './lista-cuentabancaria/lista-cuentabancaria.module#ListaCuentaBancariaModule' },
-   { path: 'crud-cuentabancaria', loadChildren: './crud-cuentabancaria/crud-cuentabancaria.module#CrudCuentaBancariaModule' }
+    { path: '', component: ListaCuentaBancariaComponent,
+        children: [
+            { path: 'crud-cuentabancaria', component: CrudCuentaBancariaComponent }
+        ]
+    }   
 ];
 
 @NgModule({
