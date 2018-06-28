@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../../router.animations';
 import { CrudService } from '../../services/crud.service';
 import { Ingreso } from '../ingreso.model';
+import { IngresosService } from '../ingresos.service';
 
 @Component({
   selector: 'app-lista-ingresos',
@@ -11,7 +12,8 @@ import { Ingreso } from '../ingreso.model';
 export class ListaIngresosComponent implements OnInit {
 
   ingresoSModel: Ingreso[];
-  constructor(private crudService: CrudService) { }
+  db_ingreso: any;
+  constructor(private crudService: CrudService, private ingresoService: IngresosService) { }
 
   ngOnInit() {
     this.getAll();
@@ -19,9 +21,14 @@ export class ListaIngresosComponent implements OnInit {
 
   getAll(){
     this.crudService.getAll('ingreso','getall').subscribe(res => {      
+      this.db_ingreso = res;
       this.ingresoSModel = <Ingreso[]> res;
       console.log('ingresos', this.ingresoSModel);
     })
+  }
+
+  buscar(parametro: string) {
+    this.db_ingreso = this.ingresoService.buscar(this.ingresoSModel, parametro);
   }
 
 }

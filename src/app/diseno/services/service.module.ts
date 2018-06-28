@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { 
-    EgresosService,
+import {    
     CrudService
 } from './service.index';
 
@@ -11,7 +10,6 @@ import {
       CommonModule
     ],
     providers: [
-      EgresosService,
       CrudService
     ],
     declarations: []

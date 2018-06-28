@@ -12,7 +12,7 @@
                         </li>
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Busqueda" aria-label="Busqueda">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Busqueda" aria-label="Busqueda" #txtbusqueda (keyup)="buscar(txtbusqueda.value)">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                     </form>
                 </div>
@@ -37,7 +37,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let item of egresoSModel; let i = index">
+                                <ng-container *ngFor="let item of db_egresos; let i = index">
+                                <tr *ngIf="item">                                    
                                     <th scope="row">{{i+1}}</th>                                    
                                     <td>{{item.fecha | date:'mediumDate'}}</td>
                                     <td>{{item.monto | number:'0.2'}}</td>
@@ -54,8 +55,8 @@
                                         <button type="button" class="btn btn-outline-success">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </button>
-                                    </td>
-                                </tr>                                
+                                </tr>
+                                </ng-container>
                             </tbody>
                         </table>
                     </div>

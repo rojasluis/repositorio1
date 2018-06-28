@@ -3,7 +3,8 @@ export class Cuenta {
        public idCuenta: number = null,
        public numeroCuenta: number = null,
        public tipoCuenta: string = null,
-       public titularCuenta: string = null
+       public titularCuenta: string = null,
+       public banco: string = null
     ) {        
     }
 }

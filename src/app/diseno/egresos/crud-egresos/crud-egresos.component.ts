@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../../router.animations';
-import { EgresosService } from '../../services/service.index';
+import { CrudService } from '../../services/service.index';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Egreso } from '../../egresos/egreso.model';
 import { Cuenta } from '../../cuentabancaria/cuenta.model';
@@ -25,22 +25,23 @@ export class CrudEgresosComponent implements OnInit {
   Egreso_model: Egreso;
   usuarioModel: Usuario;
   Cuenta_model: Cuenta;
-  MedioPago_model: MedioPago;
+  // MedioPago_model: MedioPago;
+  MedioPago_model: any;
   ConceptoEgreso_model: conceptoEgreso;
 
   form: FormGroup;
   date: Date = new Date();
 
   constructor( 
-      private egresoService: EgresosService, 
+      private crudService: CrudService, 
       private usuarioService: UsuariosService,
       private formBuilder: FormBuilder
     ) { }
 
   ngOnInit() {
-    this.egresoService.getAllMedioPago().subscribe( res => this.MedioPago_model = res );
-    this.egresoService.getAllCuentas().subscribe( res => {this.db_cuenta_origen = res;});    
-    this.egresoService.getAllConceptoEgreso().subscribe( res => this.db_concepto_egreso = res);
+    this.crudService.getAll('mediopago', 'getall').subscribe( res => this.MedioPago_model = res );
+    this.crudService.getAll('cuenta', 'getall').subscribe( res => {this.db_cuenta_origen = res;});    
+    this.crudService.getAll('conceptoegreso', 'getall').subscribe( res => this.db_concepto_egreso = res);
     this.usuarioModel = this.usuarioService.getUsuario();    
     this.prepararFormulario();
   }
@@ -49,7 +50,7 @@ export class CrudEgresosComponent implements OnInit {
     this.form = this.formBuilder.group({      
       imagen:'',
       monto:150.0,
-      conceptoEgreso:[1, Validators.required],
+      conceptoEgreso:this.db_concepto_egreso,
       cuenta:this.db_cuenta_origen,
       medioPago:this.MedioPago_model,      
       fecha: null,
@@ -76,10 +77,16 @@ export class CrudEgresosComponent implements OnInit {
     console.log(JSON.stringify(this.form.value));
     console.log(this.form.value);
 
-    this.egresoService.grabar(this.Egreso_model).subscribe( res => {
-       console.log('servidor', res);
-       this.prepararFormulario();
-    });
+
+    this.crudService.create(this.Egreso_model,'egreso','save').subscribe( res => {
+      console.log('servidor', res);
+      this.prepararFormulario();
+   });
+
+    // this.egresoService.grabar(this.Egreso_model).subscribe( res => {
+    //    console.log('servidor', res);
+    //    this.prepararFormulario();
+    // });
     
     
   }

@@ -32,6 +32,15 @@ export class CrudIngresosComponent implements OnInit {
     this.obtenerMaestros();    
   }
 
+  obtenerMaestros() {
+    this.crudService.getAll('conceptoingreso', 'getall').subscribe(res => this.db_concepto_ingreso = res);      
+    this.crudService.getAll('cuenta', 'getall').subscribe(res => this.db_cuenta = res);      
+    this.crudService.getAll('mediopago', 'getall').subscribe(res => this.db_medio_pago = res);
+    this.usuarioModel = this.usuarioService.getUsuario();
+
+    this.prepararFormulario();
+  }
+
   prepararFormulario() {
     this.form = this.formBuilder.group({      
         idIngreso: 0,
@@ -45,15 +54,6 @@ export class CrudIngresosComponent implements OnInit {
         usuario: this.usuarioModel,      
         detalles: ''          
     });
-  }
-
-  obtenerMaestros() {
-    this.crudService.getAll('conceptoingreso', 'getall').subscribe(res => this.db_concepto_ingreso = res);      
-    this.crudService.getAll('cuenta', 'getall').subscribe(res => this.db_cuenta = res);      
-    this.crudService.getAll('mediopago', 'getall').subscribe(res => this.db_medio_pago = res);
-    this.usuarioModel = this.usuarioService.getUsuario();
-
-    this.prepararFormulario();
   }
 
   guardarCambios() {
